@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> White Castle Chores </title>
+        <meta charset="utf-8">
+
+        <script>
+            window.onload=function(){
+                var chore1 = "dishes";
+                document.getElementById("rys").innerHTML = "di";
+            }
+            /*
+            var dbConnection = SQL.connect({
+                Driver: "MySQL",
+                Host: "www-test",
+                Port: 3306,
+                Database: "evaldb-04",
+                UserName: "evals",
+                Password: "3vals" });
+
+            var sql = "SELECT e.name, email, company, c.name as country, p.name as product \
+                FROM evaluation_requests e \
+                LEFT JOIN countries c \
+                    ON e.countryCode = c.id \
+                LEFT JOIN products p \
+                    ON e.productId = p.id \
+                ORDER BY insertTime DESC \
+                LIMIT 1";
+
+            var result = dbConnection.query(sql);
+
+            if (!result.isValid) {
+                test.fail("Entry not found.");
+          */  
+        </script>
+
+
+    </head>
+    <body>
+        <table style="width:100%">
+            <tr>
+                <th style="text-align: left;">Name</th>
+                <th style="text-align: left;">Chore</th>
+                <th style="text-align: left;">Bathroom duty</th>
+            </tr>
+            <tr>
+                <td>Rys</td>
+                <td id = "rys"><span title="Hover"></span></td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Mike</td>
+                <td>Mop</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>Logan</td>
+                <td>Mop</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>Gannon</td>
+                <td>Mop</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>Luke</td>
+                <td>Mop</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>Alex</td>
+                <td>Mop</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>Kian</td>
+                <td>Mop</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>Steeler</td>
+                <td>Biweek</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>Cole</td>
+                <td>Mop</td>
+                <td>No</td>
+            </tr>
+        </table>
+    </body>
+</html>
