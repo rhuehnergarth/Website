@@ -177,18 +177,19 @@
             var url = "data.php";
             var asynch = true;
             
-            ajax.open(method, url, asynch);
-            
             //recive ajax
             ajax.onreadystatechange = function()
             {
                 if(this.readyState == 4 && this.status == 200)
                 {
-                    alert(this.responseText);
+                    alert("here: " + this.responseText);
+                    console.log(this.responseText);
                 }
-                
             }
+
+            ajax.open(method, url, asynch);
             ajax.send();
+            
             
             function chbg(color, name) {
                 document.getElementById(name).style.backgroundColor = color;
