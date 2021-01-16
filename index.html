@@ -1,15 +1,195 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="notranslate" translate="no">
     <head>
         <title> White Castle Chores </title>
         <meta charset="utf-8">
+        
+        <style>
+            
+            * {
+                box-sizing: border-box;
+                margin:0;
+                padding:0;
+            }
+            
+            /* Create three equal columns that floats next to each other */
+            .column {
+                float: left;
+                width: 33.33333333333%;
+                text-align: center;
+                background-color: white;
+                color: cornflowerblue;
+                box-sizing: border-box;
+                border: 5vw solid #000;
+                border-left: 5vw solid #000;
+                border-color: cornflowerblue;
+                position: relative;            
+            }
+
+            .chore {
+                position: relative;
+                display:block;
+                
+            }
+
+            .chore .choreDesc{
+                visibility: hidden;
+                width: 100%;
+                background-color: black;
+                color: #fff;
+                text-align: center;
+                padding: 2.5% 0;
+                border-radius: 6px;
+                
+                /* Position the tooltip text - see examples below! */
+                position: absolute;
+                z-index: 1;
+                top: -5px;
+                left: 70%;
+            }
+
+            .chore .choreDesc::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: 100%;
+                margin-top: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: transparent black transparent transparent;
+            }
+
+            .chore:hover .choreDesc{
+                visibility:visible;
+            }
+
+            h1{
+                background-color: white;
+                color: cornflowerblue;
+                text-align: center;
+                margin-bottom: 40px;
+                margin-left: 30%;
+                margin-right: 30%;
+            }
+
+            body {
+                color:white;
+                background-color: cornflowerblue;
+            } 
+
+            h2{
+                font-size:50px;
+                text-decoration: underline;
+            }
+
+            .chore{
+                font-size:xx-large;
+                padding: 5% 0;
+                position: relative;
+                border-bottom: 1px solid black;
+            }
+
+            p{
+                font-size:xx-large;
+                padding: 5% 0;
+                border-bottom: 1px solid black; /* If you want dots under the hoverable text */
+            }
+
+            h1{
+                font-size: 500%;
+            }
+
+
+                        /* Button used to open the contact form - fixed at the bottom of the page */
+            .open-button {
+                background-color: #555;
+                color: white;
+                padding: 16px 20px;
+                border: none;
+                cursor: pointer;
+                opacity: 0.8;
+                position: fixed;
+                bottom: 23px;
+                right: 28px;
+                width: 280px;
+            }
+
+            /* The popup form - hidden by default */
+                .form-popup {
+                display: none;
+                position: fixed;
+                bottom: 0;
+                right: 15px;
+                border: 3px solid #f1f1f1;
+                z-index: 9;
+            }
+
+            /* Add styles to the form container */
+                .form-container {
+                max-width: 300px;
+                padding: 10px;
+                background-color: white;
+            }
+
+            /* Full-width input fields */
+            .form-container input[type=text], .form-container input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                border: none;
+                background: #f1f1f1;
+            }
+
+            /* When the inputs get focus, do something */
+            .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+            /* Set a style for the submit/login button */
+            .form-container .btn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px 20px;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                margin-bottom:10px;
+                opacity: 0.8;
+            }
+
+            /* Add a red background color to the cancel button */
+            .form-container .cancel {
+                background-color: red;
+            }
+
+            /* Add some hover effects to buttons */
+            .form-container .btn:hover, .open-button:hover {
+                opacity: 1;
+            }
+
+        </style>
 
         <script>
+            function chbg(color, name) {
+                document.getElementById(name).style.backgroundColor = color;
+                document.getElementById(name + 'Chore').style.backgroundColor = color;
+                document.getElementById(name+ 'Bathroom').style.backgroundColor = color;
+            }
+
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+            }
+
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+            }
+            /*
             window.onload=function(){
                 var chore1 = "dishes";
                 document.getElementById("rys").innerHTML = "di";
             }
-            /*
+            
             var dbConnection = SQL.connect({
                 Driver: "MySQL",
                 Host: "www-test",
@@ -37,57 +217,90 @@
 
     </head>
     <body>
-        <table style="width:100%">
-            <tr>
-                <th style="text-align: left;">Name</th>
-                <th style="text-align: left;">Chore</th>
-                <th style="text-align: left;">Bathroom duty</th>
-            </tr>
-            <tr>
-                <td>Rys</td>
-                <td id = "rys"><span title="Hover"></span></td>
-                <td>Yes</td>
-            </tr>
-            <tr>
-                <td>Mike</td>
-                <td>Mop</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>Logan</td>
-                <td>Mop</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>Gannon</td>
-                <td>Mop</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>Luke</td>
-                <td>Mop</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>Alex</td>
-                <td>Mop</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>Kian</td>
-                <td>Mop</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>Steeler</td>
-                <td>Biweek</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>Cole</td>
-                <td>Mop</td>
-                <td>No</td>
-            </tr>
-        </table>
+        <h1> White Castle </h1>
+        <div class="row">
+            <div class="column">
+                <h2>Names</h2>
+                <p class = name id = rys onmouseover="chbg('yellow','rys')" onmouseout="chbg('white', 'rys')">Rys</p>
+                <p class = name id = mike onmouseover="chbg('yellow','mike')" onmouseout="chbg('white', 'mike')">Mike</p>
+                <p class = name id = logan onmouseover="chbg('yellow','logan')" onmouseout="chbg('white', 'logan')">Logan</p>
+                <p class = name id = gannon onmouseover="chbg('yellow','gannon')" onmouseout="chbg('white', 'gannon')">Gannon</p>
+                <p class = name id = kian onmouseover="chbg('yellow','kian')" onmouseout="chbg('white', 'kian')">Kian</p>
+                <p class = name id = alex onmouseover="chbg('yellow','alex')" onmouseout="chbg('white', 'alex')">Alex</p>
+                <p class = name id = luke onmouseover="chbg('yellow','luke')" onmouseout="chbg('white', 'luke')">Luke</p>
+                <p class = name id = steeler onmouseover="chbg('yellow','steeler')" onmouseout="chbg('white', 'steeler')">Steeler</p>
+                <p class = name id = cole onmouseover="chbg('yellow','cole')" onmouseout="chbg('white', 'cole')">Cole</p>
+            </div>
+            <div class="column">
+
+                <h2>Chores</h2>
+
+                
+                <div class = chore id = rysChore onmouseover="chbg('yellow','rys')" onmouseout="chbg('white', 'rys')"> Mop
+                    <span class = choreDesc desc id = rysChoreDesc> mop the downstairs, stairs, second floor</span>
+                </div>
+
+                <div class = chore id = mikeChore onmouseover="chbg('yellow','mike')" onmouseout="chbg('white', 'mike')">Trashman
+                    <span class = choreDesc desc id = mikeChoreDesc> empty main trash all week</span>
+                </div>
+
+                <div class = chore id = loganChore onmouseover="chbg('yellow','logan')" onmouseout="chbg('white', 'logan')"> Windows
+                    <span class = choreDesc desc id = loganChoreDesc> clean all common area windows not outside </span>
+                </div>
+
+                <div class = chore id = gannonChore onmouseover="chbg('yellow','gannon')" onmouseout="chbg('white', 'gannon')">Biweek
+                    <span class = choreDesc desc id = gannonChoreDesc> week off </span>
+                </div>
+
+                <div class = chore id = kianChore onmouseover="chbg('yellow','kian')" onmouseout="chbg('white', 'kian')">Wipe
+                    <span class = choreDesc desc id = kianChoreDesc> wipe countertops, stovetop, comon tables,sink </span>
+                </div>
+
+                <div class = chore id = alexChore onmouseover="chbg('yellow','alex')" onmouseout="chbg('white', 'alex')">Appliances
+                    <span class = choreDesc desc id = alexChoreDesc> clean all appliances in the kitchen</span>
+                </div>
+
+                <div class = chore id = lukeChore onmouseover="chbg('yellow','luke')" onmouseout="chbg('white', 'luke')">Sweep
+                    <span class = choreDesc desc id = lukeChoreDesc> sweep all common areas</span>
+                </div>
+
+                <div class = chore id = steelerChore onmouseover="chbg('yellow','steeler')" onmouseout="chbg('white', 'steeler')">Biweek
+                    <span class = choreDesc desc id = steelerChoreDesc> week off </span>
+                </div>
+
+                <div class = chore id = coleChore onmouseover="chbg('yellow','cole')" onmouseout="chbg('white', 'cole')">Vacuum
+                    <span class = choreDesc desc id = coleChoreDesc> slave stairs, 3rd floor main area couches and carpets</span>
+                </div>
+
+            </div>
+            <div class="column">
+              <h2>Bathroom</h2>
+              <p id = rysBathroom onmouseover="chbg('yellow','rys')" onmouseout="chbg('white', 'rys')">3rd floor</p>
+              <p id = mikeBathroom onmouseover="chbg('yellow','mike')" onmouseout="chbg('white', 'mike')">&nbsp </p>
+              <p id = loganBathroom onmouseover="chbg('yellow','logan')" onmouseout="chbg('white', 'logan')">&nbsp</p>
+              <p id = gannonBathroom onmouseover="chbg('yellow','gannon')" onmouseout="chbg('white', 'gannon')">&nbsp</p>
+              <p id = kianBathroom onmouseover="chbg('yellow','kian')" onmouseout="chbg('white', 'kian')">2nd floor</p>
+              <p id = alexBathroom onmouseover="chbg('yellow','alex')" onmouseout="chbg('white', 'alex')">&nbsp</p>
+              <p id = lukeBathroom onmouseover="chbg('yellow','luke')" onmouseout="chbg('white', 'luke')">&nbsp</p>
+              <p id = steelerBathroom onmouseover="chbg('yellow','steeler')" onmouseout="chbg('white', 'steeler')">&nbsp</p>
+              <p id = coleBathroom onmouseover="chbg('yellow','cole')" onmouseout="chbg('white', 'cole')">1st floor</p>
+            </div>
+        </div>
+        <button class="open-button" onclick="openForm()">Open Form</button>
+
+        <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+            <h1>Login</h1>
+
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="submit" class="btn">Login</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+        </div>
     </body>
 </html>
