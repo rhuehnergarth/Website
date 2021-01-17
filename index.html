@@ -172,6 +172,9 @@
 
         <script>
             
+            var chores = ["Mop", "Trash", "Windows", "BiWeek", "Wipe Counters", "Appliances", "Sweep", "BiWeek", "Vacuum"];
+            //var choreDescriptions = []
+
             var ajax = new XMLHttpRequest();
             var method = "Get";
             var url = "data.php";
@@ -182,8 +185,15 @@
             {
                 if(this.readyState == 4 && this.status == 200)
                 {
-                    alert("here: " + this.responseText);
-                    console.log(this.responseText);
+                    var data = JSON.parse(this.responseText);
+                    
+                    for(var i = 0; i < data.length; i ++)
+                    {
+                        var name = data[i].NAME;
+                        var choreNum = data[i].CHORE_NUMBER;
+                        document.getElementById(name.toLowerCase() + "Chore").textContent = chores[choreNum - 1];
+                        console.log(document.getElementById(name.toLowerCase() + "Chore").textContent);
+                    }
                 }
             }
 
@@ -203,6 +213,10 @@
 
             function closeForm() {
                 document.getElementById("myForm").style.display = "none";
+            }
+
+            function rotate(){
+
             }
             
         </script>
