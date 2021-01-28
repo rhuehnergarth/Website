@@ -3,23 +3,20 @@
     <head>
         <title> White Castle Chores </title>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/> 
     </head>
 
     <script src="index.js" type="text/javascript"></script> 
     <script>
-    
-        function chbg(color, name) {
-            document.getElementById(name).style.backgroundColor = color;
-            document.getElementById(name + 'Chore').style.backgroundColor = color;
-            document.getElementById(name+ 'Bathroom').style.backgroundColor = color;
-        }
 
         function openForm() {
+            document.getElementById("entryButton").style.display = "none";
             document.getElementById("myForm").style.display = "block";
         }
 
         function closeForm() {
             document.getElementById("myForm").style.display = "none";
+            document.getElementById("entryButton").style.display = "block";
         }
 
         function rotate(){
@@ -27,9 +24,17 @@
         }
 
         function submitForm(name){
-            var form = document.getElementById("LoginForm");
-            name = form.elements[0].value;
+            name = name.toLowerCase();
+            name = name.charAt(0).toUpperCase() + name.slice(1);
             var results = findChore(name);
+        }
+
+        function toggleVisivbility(id){
+            var e = document.getElementById(id);
+            if(e.style.display == 'block')
+                e.style.display = 'none';
+            else
+                e.style.display = 'block';
         }
     </script>
 
@@ -39,7 +44,7 @@
             }
 
 
-                        /* Button used to open the contact form - fixed at the bottom of the page */
+            /* Button used to open the contact form - fixed at the bottom of the page */
             .open-button {
                 background-color: #555;
                 color: white;
@@ -48,24 +53,24 @@
                 cursor: pointer;
                 opacity: 0.8;
                 position: fixed;
-                bottom: 23px;
-                right: 28px;
-                width: 280px;
+                bottom: 50%;
+                right: 45%;
+                width: 10%;
             }
 
             /* The popup form - hidden by default */
                 .form-popup {
                 display: none;
                 position: fixed;
-                bottom: 0;
-                right: 15px;
+                bottom: 50%;
+                right: 40%;
                 border: 3px solid #f1f1f1;
                 z-index: 9;
             }
 
             /* Add styles to the form container */
                 .form-container {
-                max-width: 300px;
+                max-width: 30%;
                 padding: 10px;
                 background-color: white;
             }
@@ -110,10 +115,10 @@
     </style>
 
     <body>
-        <button class="open-button" onclick="openForm()">Open Form</button>
+        <button id = "entryButton" class="open-button" onclick="openForm()">Login</button>
 
         <div class="form-popup" id="myForm">
-        <form action="/action_page.php" class="form-container" id = "LoginForm">
+        <form class="form-container" id = "LoginForm">
             <h1>Login</h1>
 
             <label for="email"><b>Name</b></label>
@@ -122,5 +127,10 @@
             <button type="submit" class="btn" onclick = "submitForm(document.getElementById('nameInput').textContent)">Login</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
+        </div>
+
+        <div class = "informationPopup" id = "info">
+
+        </div>
     </body>
 </html>

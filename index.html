@@ -96,6 +96,27 @@
                 padding: 5% 0;
                 border-bottom: 1px solid black; /* If you want dots under the hoverable text */
             }
+
+            /*for login button */
+            h1{
+                font-size: 500%;
+            }
+
+
+                        /* Button used to open the contact form - fixed at the bottom of the page */
+            .open-button {
+                background-color: #555;
+                color: white;
+                padding: 16px 20px;
+                border: none;
+                cursor: pointer;
+                opacity: 0.8;
+                position: fixed;
+                bottom: 23px;
+                right: 28px;
+                width: 280px;
+            }
+
         </style>
 
         <script>
@@ -128,8 +149,13 @@
             ajax.open(method, url, asynch);
             ajax.send();
 
-        </script>
+            function chbg(color, name) {
+                document.getElementById(name).style.backgroundColor = color;
+                document.getElementById(name + 'Chore').style.backgroundColor = color;
+                document.getElementById(name+ 'Bathroom').style.backgroundColor = color;
+            }
 
+        </script>
 
     </head>
     <body>
@@ -202,5 +228,14 @@
               <p id = coleBathroom onmouseover="chbg('yellow','cole')" onmouseout="chbg('white', 'cole')">1st floor</p>
             </div>
         </div>
+
+        <button id="myButton" class="open-button">Login</button>
+        
     </body>
+
+    <script>
+        document.getElementById("myButton").onclick = function () {
+            location.href = "login.html";
+        };
+    </script>
 </html>
